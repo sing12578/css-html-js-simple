@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.containerregister{
+    width: 500px;
+    background-color: rgb(148, 227, 227);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1.headerRegis{
+    margin-top: 0;
+    padding-left: 10px;
+}
+.container{
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+input.userInput{
+    width: 80%;
+}
+.center{
+    text-align: center;
+}
+.description{
+    display: block;
+    width: 500px;
+    height: 30px;
+}
+#descrip{
+    display: block;
+    width: 400px;
+    height: 40px;
+}
+.submitContain{
+    display: flex;
+    padding: 10px;
+}
+.flex{
+    display: flex;
+    gap: 10px;
+}
+.column{
+     flex-direction: column;
+}
+center{
+    align-items: center;
+}
+.message{
+    background-color: gray;
+    padding: 20px;
+    display: none;
+} 
+.message.success{
+    background-color: green;
+    display: block;
+}
+.message.danger{
+    background-color: red;
+    display: block;
+}

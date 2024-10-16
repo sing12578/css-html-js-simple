@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="Register.css">
+</head>
+<body>
+    <div class="containerregister">
+        <h1 class="headerRegis container center">Register Form</h1>
+        <div class="container fristnameContant">
+            ชื่อจริง<br>
+            <input class="userInput" type="text" name="fristname" value="ชื่อจริง">
+        </div>
+        <div class="container lastnameContant">
+            นามสกุล<br>
+            <input class="userInput" type="text" name="lastname" value="นามสกุล">
+        </div>
+        <div class="container ageContant">
+            อายุ<br>
+            <input class="userInput" type="text" name="age" value="อายุ">
+        </div>
+        <div class="container">
+            เพศ<br>
+            <div class="gender">
+                <input type="radio" name="gender" value="ชาย">ชาย
+            </div>
+            <div class="gender">
+                <input type="radio" name="gender" value="หญิง">หญิง
+            </div>
+            <div class="gender">
+                <input type="radio" name="gender" value="ไม่ระบุ">ไม่ระบุ
+            </div>
+        </div>
+        <div class="container">
+            สิ่งที่สนใจ<br>
+            <div class="interest">
+                <input type="checkbox" name="interest" value="หนังสือ">หนังสือ
+            </div>
+            <div class="interest">
+                <input type="checkbox" name="interest" value="วีดีโอ">วีดีโอ
+            </div>
+            <div class="interest">
+                <input type="checkbox" name="interest" value="เกมส์">เกมส์
+            </div>
+        </div>
+        <div class="container">
+            คำอธิบายเพิ่มเติม<br>
+            <textarea name="description" id="descrip"></textarea>
+        </div>
+
+        <div class="submitContain flex column center">
+            <a href="https://www.google.com" target="_blank">T&Q</a>
+            <div>
+                <div id="message" class="message">Hello message</div>
+            </div>
+            <button id="submitData" onclick="submitData()">ส่งข้อมูล</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="Register.js"></script>
+    
+</body>
+</html>
