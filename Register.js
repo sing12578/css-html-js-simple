@@ -1,28 +1,25 @@
-// const validateData = (userData) => {
-//     let errors = []
-//     if(!userData.fristname){
-//         errors.push('กรุณากรอกชื่อ')
-//     }
-//     if(!userData.lastname){
-//         errors.push('กรุณากรอกนามสกุล')
-//     }
-//     if(!userData.age){
-//         errors.push('กรุณากรอกอายุ')
-//     }
-//     if(!userData.interest){
-//         errors.push('กรุณากรอกเสือกสิ่งที่สนใจ')
-//     }
-//     if(!userData.gender){
-//         errors.push('กรุณากรอกเพศ')
-//     }
-//     if(!userData.lastname){
-//         errors.push('กรุณากรอกนามสกุล')
-//     }
-//     if(!userData.description){
-//         errors.push('กรุณาอธิบายเพิ่มเติม')
-//     }
-//     return errors
-//}   
+const validateData = async (userData) => {
+    let errors = []
+    if(!userData.fristname){
+        errors.push('ยังไม่ได้ระบุชื่อ')
+    }
+    if(!userData.lastname){
+        errors.push('ยังไม่ด้ระบุนามสกุล')
+    }
+    if(!userData.age){
+        errors.push('ยังไม่ได้ระบุอายุ')
+    }
+    if(!userData.gender){
+        errors.push('ยังไม่ด้ระบุเพศ')
+    }
+    if(!userData.interest){
+        errors.push('ยังไม่ได้ระบุสิ่งที่สนใจ')
+    }
+    if(!userData.description){
+        errors.push('ยังไม่ด้ระบุรายละเอียด')
+    }
+    return errors
+}
 
 const submitData = async () => {
     let fristnameDom = document.querySelector('input[name=fristname]').value
@@ -52,7 +49,6 @@ const submitData = async () => {
             }
         }
 
-
         let userData = [{
             fristname: fristnameDom,
             lastname: lastnameDom,
@@ -63,17 +59,17 @@ const submitData = async () => {
         }]
         //console.log('submit user DB :', userData)
 
-        //const errors = validateData(userData)
+        //validate data
+        const errors = validateData(userData)
+        console.log('show errors', errors)
+        if(errors.length > 0){
+            throw {
+                message: 'someting wrong',
+                errors: errors
+            }
+        }
 
-        // if(errors.length>0){
-        //     throw{
-        //         message: 'กรอกข้อมูลไม่ครบ',
-        //         errors: errors,
-        //         data: userData
-        //     }
-    
-        // }
-        
+        //เชื่อม axios 
         const response = await axios.post('http://localhost:8000/users', userData)
         //console.log('user DATA', response.data)
 
@@ -82,13 +78,12 @@ const submitData = async () => {
 
     }
     catch (error) {
-        console.log('error message',error.message)
         console.log('error', error)
-        console.log(error.data)
-
-        if(error.response){
-            console.log(error.response.data.message)
-        }
+        console.log('error data', error.errors)
+        //show object ที่ error จากฝั่ง server
+        // if(error.response){
+        //     console.log(error.response.data.message)
+        // }
 
         let htmlData = '<div>'
         //tempate neturial
@@ -100,7 +95,7 @@ const submitData = async () => {
         }
         htmlData += '</ul>'
         htmlData += '</div>'
-
+        
         messageDom.innerHTML = htmlData
         messageDom.className = 'message danger'
 
